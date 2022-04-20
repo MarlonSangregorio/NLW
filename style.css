@@ -1,0 +1,400 @@
+/*RESET_____________________________________________*/
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+img{
+  width:100%;
+  height:auto;
+}
+
+/*VARIAVEIS_____________________________________________*/
+:root{
+  /*variavel altura*/
+  --header-height: 4.5rem;
+  --hue: 50;
+   /*Cores hls*/
+  --base-color: hsl(var(--hue)36% 57%);
+  --base-color-second: hsl(var(--hue)65% 88%);
+  --base-color-alt: hsl(var(--hue)57% 53%);
+  --title-color: hsl(var(--hue)41% 10%);
+  --text-color: hsl(0 0% 46%);
+  --text-color-light: hsl(0 0% 98%);
+  --body-color: hsl(0 0% 98%);
+}
+
+/*BASE_________________________________________________*/
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  font:400 1rem 'DM Sans', sans-serif;
+  color: var(--text-color);
+  background: var(--body-color);
+  -webkit-font-smoothing: auto;
+}
+
+.title{
+  font:700 1.875rem 'Poppins',sans-serif;
+  color: var(--title-color);
+}
+
+.button{
+  display: inline-flex;
+  background-color: var(--base-color);
+  color: var(--base-color-second);
+  height: 3.5rem;
+  padding: 0 2rem;
+  border-radius: 0.25rem;
+  align-items: center;
+  font: 500 1rem "DM Sans", sans-serif;
+  transition: background 0.2s;
+}
+
+.button:hover{
+  background: var(--base-color-alt);
+}
+
+.divider-1{
+  height: 1px;
+  background: linear-gradient(270deg,
+  hsla(var(--hue), 36%, 57%, 1) 0%,
+  hsla(var(--hue), 65%, 88%, 0.34) 100%
+   
+    );
+}
+.divider-2{
+  height: 1px;
+  background: linear-gradient(-270deg,
+  hsla(var(--hue), 36%, 57%, 1) 0%,
+  hsla(var(--hue), 65%, 88%, 0.34) 100%
+   
+    );
+}
+
+/*LAYOUT_________________________________________________*/
+
+.section header{
+  margin-bottom: 4rem;
+}
+
+.section header .title strong{
+  color: (var --base-color);
+}
+
+#header{
+  border-bottom: 1px solid rgb(169, 169, 169);
+  margin-bottom: 2rem;
+  display: flex;
+
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index:100;
+  background-color: var(--body-color);
+}
+
+/*#header.scroll {
+  box-shadow: 0px 0px 12 rgba(0, 0, 0, 0.1);
+
+}*/
+
+main{
+  margin-top: calc(var(--header-height) + 2rem);/*calcularoda no css*/
+}
+.container{
+  margin-left:1.5rem;
+  margin-right:1.5rem;
+}
+
+.grid{
+  display: grid;
+  gap: 2rem;
+}
+
+.section{
+  padding: 5rem 0;
+}
+
+.section .title{
+  margin-bottom: 1rem;
+}
+.grid{
+  display: grid;
+  gap: 2rem;
+}
+
+.section{
+  padding: 5rem 0;
+}
+/*LOGO________________________________________________________*/
+.logo{
+  font: 700 1.31rem 'Poppins', sans-serif;
+  color: var(--title-color);
+}
+
+.logo span{
+  color: var(--base-color);
+}
+
+/*Navigation________________________________________________*/
+nav{
+  height: var(--header-height);
+  display:flex;
+  align-items: center;
+  justify-content:space-between;
+  width: 100%;
+}
+
+nav ul.grid{
+  gap: 4rem;
+}
+
+nav ul li {
+  text-align: center; 
+}
+
+nav ul li a{
+  transition: color 0.2s;
+  position: relative;
+}
+
+nav ul li a:hover{
+  color: var(--base-color);
+}
+
+nav ul li a::after{
+  content: "";
+  width: 0%;
+  height: 2px;
+  background-color: var(--base-color);
+
+  position: absolute;
+  left: 0;
+  bottom: -1rem;
+
+  transition: width 10s;
+}
+
+nav ul li a:hover::after{
+   width: 100%;
+}
+
+nav .menu{
+  opacity: 0;
+  visibility: hidden;
+}
+
+/*_________________MOSTRAR MENU______________________*/
+
+nav .menu{
+  opacity: 0;
+  visibility: hidden;
+  top: -20rem;
+  transition: 0.3s;
+}
+
+nav .menu ul{
+  display: none;
+}
+
+nav.show .menu{
+  opacity: 1;
+  visibility: visible;
+
+  background: var(--body-color);
+
+  height: 100%;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: grid;
+  place-content: center;
+}
+
+nav.show .menu ul{
+  display: grid;
+}
+
+nav ul.grid{
+  gap: 4rem;
+}
+
+/*toogle(liga/desliga) menu>>>>>>>>>>*/
+
+.toggle {
+  color: var(--base-color);
+  font-size: 1.5rem;
+  cursor: pointer;/*mao do mikey kkkk*/
+}
+
+nav .icon-close{
+  visibility: hidden; 
+  opacity: 0;
+
+  position: absolute;
+  top: -1.5rem;
+  right: 1.5rem;
+
+  transition: 0.5s;
+  top: 1.5rem;
+  
+}
+
+nav.show div.icon-close{
+  visibility: visible;
+  opacity: 1  ;
+}
+
+/*HOME_______________________________________________________________________*/
+
+#home{
+  overflow: hidden;/*impede com que a img transborde dos limites do contanier*/
+}
+ 
+#home .container{
+  margin:0;
+}
+#home image{
+  position: relative;
+}
+
+#home .image::before{
+  content:'';
+  height: 100%;
+  width: 100%;
+  background: var(--base-color-second);
+  position: absolute;
+  
+ 
+  top: -8%;
+  left: 6%;
+  z-index: -1;
+}
+
+#home .image{
+  position: relative;
+  right: 2.93rem;
+}
+
+#home .image img,
+#home .image::before{
+  border-radius: 1rem;
+}
+
+#home .text{
+  margin-left:1.5rem;
+  margin-right:1.5rem;
+  text-align: center;
+}
+
+#home .text h1{
+  margin-bottom: 1rem;
+}
+
+#home .text p{
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+
+/*______________ABOUT____________*/
+
+
+#about .image::before{
+  content:'';
+  height: 100%;
+  width: 100%;
+  background: var(--base-color-second);
+  position: absolute;
+  
+  top: -5%;
+  left: -3.5%;
+  z-index: -1;
+}
+
+#about .image{
+  position: relative;
+  left: 1.50rem;
+}
+
+#about .image img,
+#about .image::before{
+  border-radius: 1rem;
+}
+#about .text{
+  margin-left:1.5rem;
+  margin-right:1.5rem;
+}
+
+#about .text h1{
+  margin-bottom: 1rem;
+}
+
+#about .text p{
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+
+/*____________SERVICES________________________*/
+
+.cards.grid{
+  gap: 1.5rem;
+}
+
+.card{
+  padding: 3.625rem 2rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+  border-bottom: 0.25rem solid var(--base-color);
+  border-radius: 0.25rem 0.25rem 0 0;
+  text-align: center;
+}
+
+.card i{
+  display: block;/*ocupa a linha toda*/
+  margin-bottom: 1.5rem;
+  font-size: 5rem;
+  color: var(--base-color);
+}
+
+.card .title{
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+#services .text{
+  margin-left:1.5rem;
+  margin-right:1.5rem;
+  color: black;
+  font:500 1rem 'Poppins', sans-serif;
+}
+
+#services .text h1{
+  margin-bottom: 1rem;
+}
+
+#services .text p{
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+
+#services .text span{
+  color: var(--base-color)
+}
+
