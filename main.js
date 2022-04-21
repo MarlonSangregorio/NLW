@@ -33,3 +33,34 @@ const navHeight =
       header.classList.remove('scroll')
     }
   })
+
+/*Carrosel Slider das Testemunhas */
+
+const swiper = new Swiper('.swiper', {
+  //declarando objeto
+  slidesPreView: 1, //quantos slides eu quer over
+  pagination: {
+    el: '.swiper-pagination' //buscando o elemento swiper-pagination
+  },
+  mousewheel: true, //funciona a rodinha do mouse
+  keyboard: true //funciona as setas do teclado
+})
+
+/*ScrollReveal efeito de tela descendo */
+
+const scrollReveal = ScrollReveal({
+  origin: 'top', //começar do topo da pág
+  distance: '30px', //distancia
+  duration: 700, //duraçao em milisegundos
+  reset: true //quando eu baixar tudo a pág,
+})
+
+scrollReveal.reveal(
+  `#home .image, #home .text,
+  #about .image, #about .text,
+  #services header, #services .text .card,
+  #depositions header, #depositions .depositions,
+  #contact .text, #contact .links
+`,
+  { interval: 100 }
+)
