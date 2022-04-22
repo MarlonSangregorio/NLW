@@ -21,18 +21,18 @@ for (const link of links) {
 }
 //mudar o cabeçalho da pag quando scroll
 
-const header = document.querySelector('header')
-const navHeight =
-  header.offsetHeight /
-  window.addEventListener('scroll', function () {
-    if (window.scrollY >= newHeight) {
-      //maior que a altura do cabeçalho
-      header.classList.add('scroll')
-    } else {
-      //menor que a altura do cabeçalho
-      header.classList.remove('scroll')
-    }
-  })
+function changeHeaderWhenScroll() {
+  const header = document.querySelector('header')
+  const navHeight = header.offsetHeight
+
+  if (window.scrollY >= navHeight) {
+    //maior que a altura do cabeçalho
+    header.classList.add('scroll')
+  } else {
+    //menor que a altura do cabeçalho
+    header.classList.remove('scroll')
+  }
+}
 
 /*Carrosel Slider das Testemunhas */
 
@@ -61,6 +61,26 @@ scrollReveal.reveal(
   #services header, #services .text .card,
   #depositions header, #depositions .depositions,
   #contact .text, #contact .links
+  footer .text, footer.brand, footer .social
 `,
   { interval: 100 }
 )
+
+/*Botão voltar para o top (back-to-top) */
+
+function backToTop() {
+  const BackToTopButton =
+    document.querySelector('.back-to-top') /*procurando a class no html*/
+  if (this.window.scrollY >= 560) {
+    BackToTopButton.classList.add('show')
+  } else {
+    BackToTopButton.classList.remove('show')
+  }
+}
+
+/*When Scroll */
+
+window.addEventListener('scroll', function () {
+  changeHeaderWhenScroll()
+  backToTop()
+})
