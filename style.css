@@ -18,6 +18,8 @@ img{
   height:auto;
 }
 
+
+
 /*VARIAVEIS_____________________________________________*/
 :root{
   /*variavel altura*/
@@ -31,6 +33,12 @@ img{
   --text-color: hsl(0 0% 46%);
   --text-color-light: hsl(0 0% 98%);
   --body-color: hsl(0 0% 98%);
+
+  /*fonts*/
+  --sub-title-font-size: 1rem;
+
+  --title-font: 'Poppins', sans-serif;
+  --body-font:: 'DM Sans', sans-serif;
 }
 
 /*BASE_________________________________________________*/
@@ -40,14 +48,14 @@ html{
 }
 
 body{
-  font:400 1rem 'DM Sans', sans-serif;
+  font:400 1rem var(--body-font);
   color: var(--text-color);
   background: var(--body-color);
   -webkit-font-smoothing: auto;
 }
 
 .title{
-  font:700 1.875rem 'Poppins',sans-serif;
+  font:700 1.875rem var(--title-font);
   color: var(--title-color);
 }
 
@@ -56,11 +64,11 @@ body{
   background-color: var(--base-color);
   color: var(--base-color-second);
   height: 3.5rem;
-  padding: 0 2rem;
+  padding: 2rem;
   border-radius: 0.25rem;
   align-items: center;
-  font: 500 1rem "DM Sans", sans-serif;
-  transition: background 0.2s;
+  font: 500 1rem var(--body-font);
+  transition: background 0.3s;
 }
 
 .button:hover{
@@ -113,9 +121,7 @@ body{
 
 }*/
 
-main{
-  margin-top: calc(var(--header-height) + 2rem);/*calcularoda no css*/
-}
+
 .container{
   margin-left:1.5rem;
   margin-right:1.5rem;
@@ -129,10 +135,15 @@ main{
 .section{
   padding: 5rem 0;
 }
-
+ 
 .section .title{
   margin-bottom: 1rem;
 }
+
+.section .subtitle {
+  font-size: var(--sub-title-font-size);
+}
+
 .grid{
   display: grid;
   gap: 2rem;
@@ -143,7 +154,7 @@ main{
 }
 /*LOGO________________________________________________________*/
 .logo{
-  font: 700 1.31rem 'Poppins', sans-serif;
+  font: 700 1.31rem var(--title-font);
   color: var(--title-color);
 }
 
@@ -191,7 +202,7 @@ nav ul li a::after{
   left: 0;
   bottom: -1rem;
 
-  transition: width 10s;
+  transition: width 1s;
 }
 
 nav ul li a:hover::after{
@@ -500,6 +511,11 @@ nav.show div.icon-close{
 footer {
   background-color: var(--base-color);
 }
+
+footer .section {
+  padding: 4rem 0;
+}
+
 /*deve se colocar display inline-block pois o navegador coloca inline padrao*/
 footer .logo {
   display: inline-block;
@@ -556,12 +572,250 @@ footer .social a:hover {
 
 /*_____________RESPONSIVO!!!_____________*/
 /*respoda do site dada a diferentes dispositivos, como monitor, tablete e celular*/
-
 /*MEDIA QUERIES*/
 /*extra large devices: 1200 > */
+@media (min-width: 1200px){
+
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section {
+  padding: 10rem 0;
+}
+
+
+nav h1.logo {
+  font-size: xx-large;
+  margin-left: 7.6875rem;
+}
+
+nav .menu {
+  opacity: 1;
+  visibility: visible;
+  top: 0;
+}
+
+nav .menu ul {
+  display: flex;
+  gap: 2rem;
+}
+
+nav .menu ul li a.title {
+  font: 500 1rem var(--title-font);
+}
+
+nav .menu ul {
+  margin-right: 7.6875rem;
+}
+
+nav .menu ul li {
+  margin-right: 2rem;
+}
+
+nav .icon-menu {
+  display: none;
+}
+/*==================Home=======================================*/
+
+#home .container {
+  grid-auto-flow: column;
+  width: fit-content;
+  justify-content: space-between;
+}
+
+#home .text h2 {
+  font: 400 2.25rem var(--title-font);
+  color: var(--text-color)
+}
+
+#home .image {
+  order: 1;
+  margin-right: 10.5rem;
+  
+}
+
+#home .text {
+  order: 0;
+  margin-left: 7.6875rem;
+  margin-right: 7.375rem;
+}
+
+#home .text h2.title {
+  font: 700 2rem var(--title-font);
+}
+
+#home .text p {
+  font: 400 1.125rem 'DM-Sans' serif;
+  text-align: justify;
+}
+
+#home .text {
+  text-align: left;
+}
+
+#home .text a {
+  font: 700;
+}
+
+#home .image::before{
+  content:'';
+  height: 100%;
+  width: 100%;
+  background: var(--base-color-second);
+  position: absolute;
+  
+ 
+  top: -18%;/*alterado*/
+  left: 15%;
+  z-index: -1;
+}
+
+/*==================About=======================================*/
+
+#about .container {
+  grid-auto-flow: column;
+  width: fit-content;
+  justify-content: space-between;
+}
+
+#about .image {
+  order: 0;
+  margin-right: 4rem;
+
+}
+
+#about .text {
+  order: 1;
+  margin-left: 4rem;
+  margin-right: 7.5625rem;
+}
+
+#about .text p {
+  font-size: 1.5rem;
+}
+
+#about .image::before{
+  content:'';
+  height: 100%;
+  width: 100%;
+  background: var(--base-color-second);
+  position: absolute;
+  
+  top: -6%;
+  left: -7.5%;
+  z-index: -1;
+}
+
+#about .text h2 {
+  font: 700 2.25rem var(--title-font);
+}
+
+/*==========SERVICES==================*/
+
+#services .text h1 {
+  text-align: center;
+  font: 700 2.25rem var(--title-font);
+  margin-bottom: 0.75rem;
+}
+
+#services .text p.subtitle {
+  text-align: center;
+  font-size: 1.125rem;
+
+  margin-left: 26.375rem;
+  margin-right: 26.375rem;
+  margin-bottom: 7.625rem;
+}
+
+#services .cards{
+  
+  grid-auto-flow: column;
+  width: fit-content;
+  justify-content: space-between;
+  
+  margin-left: 7.75rem;
+  margin-right: 7.75rem;
+}
+
+#services .cards p{
+  color: var(--text-color);
+}
+
+/*===================DEPOIMENTOS=================*/
+
+#depositions h2{
+  text-align: center;
+  font-size: 2.25rem;
+}
+
+#depositions{
+  margin-left: 20rem;
+  margin-right: 20rem;
+}
+
+
+
+
+/*=========CONTACT======================*/
+
+#contact {
+  grid-auto-flow: column;
+  width: fit-content;
+  justify-content: space-between;
+}
+
+#contact .text {
+  order: 0;
+}
+
+#contact .text h2 {
+  font-size: 2.25rem;
+}
+
+#contact .text p {
+  font-size: 1.25rem;
+}
+
+#contact .container {
+  margin-left: 7.6875rem;
+  margin-right: 19.3125rem;
+}
+
+
+#contact .links {
+  order: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  main{
+    margin-top: var(--header-height);
+
+  }
+}
 /*large devices: 1023 >*/
-/*large devices: 992 >*/
+/*large devices: 992 >*/ 
 /*@media (min-width: 992px) {
+  :root {
+    font:500 2.25rem 'Poppins', sans-serif;
+    --sub-title-font-size: 1.125rem;
+  }
 }*/
 /*medium devices: 767 > tablets*/
 
